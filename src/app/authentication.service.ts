@@ -29,13 +29,14 @@ export interface TokenPayload {
 @Injectable()
 export class AuthenticationService {
   private token: string
-
+  
   constructor(private http: HttpClient, private router: Router) {}
 
   private saveToken(token: string): void {
     localStorage.setItem('usertoken', token)
     this.token = token
   }
+  
 
   private getToken(): string {
     if (!this.token) {
@@ -70,7 +71,7 @@ export class AuthenticationService {
   }
 
   public login(user: TokenPayload): Observable<any> {
-    debugger;
+  
     const base = this.http.post(`http://localhost:3000/users/login`, user)
 
     const request = base.pipe(
