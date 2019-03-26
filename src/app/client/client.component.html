@@ -1,10 +1,37 @@
-
-<ul class ="list-group">
-  <li class="list-group-item"
+<app-my-nav></app-my-nav>
+<div class="client">
+    <input type="text" (keyup.enter)="createData(todo)"
+    #todo> 
+    
+<table class="table table-dark">
+  
+    <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Arabic Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+ 
+  <tr 
   *ngFor="let client of client">
-  {{client.name}}
+  <td>{{client.name}} </td>
+  <td></td>
+  <td>{{client.email}}</td> 
 
-  </li>
-</ul>
+  </tr>
+
+</table>
+</div>
 
 
+
+<!-- <div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+
+
+    </div>
+  </div> -->

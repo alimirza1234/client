@@ -12,9 +12,11 @@ import { HttpClient } from '@angular/common/http';
 export class ClientComponent implements OnInit {
 client: any;
 private url="http://localhost:3000/clients"
+  todo: any;
+  
 
-  constructor(http: HttpClient) {
-   http.get(this.url)
+  constructor(private http: HttpClient) {
+   this.http.get(this.url)
    .subscribe(response=>{
      console.log(response);
      this.client=response;
@@ -23,6 +25,28 @@ private url="http://localhost:3000/clients"
    }
 
   ngOnInit() {
+  }
+
+  createData(todo){
+    let data ={
+      name : todo.value
+    };
+    this.http.post("http://localhost:3000/clients/register",data)
+    .subscribe(response=>{
+      console.log(response);
+
+      this.client.push(response);
+    })
+
+  
+
+    // let data = {
+    //   title: client.value
+    // };
+    // this.http.post(this.url,data)
+    // .subscribe(response=>{
+    //   console.log(response)
+    // })
   }
 
 }
